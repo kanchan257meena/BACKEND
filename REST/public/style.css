@@ -1,0 +1,25 @@
+ div{
+        background-color: rgb(250, 210, 216);
+        margin-bottom: 10px;
+        display: flex; flex-direction: column;
+        height: 150px; width: 200px;
+        
+    }
+    h3{
+        color: rgb(246, 13, 129); margin: 10px;
+        font-style: italic;
+        
+    }
+    h4{
+        color: rgb(105, 104, 104);margin: 10px;
+    }
+ 
+a{
+    text-decoration: none;
+    /* font-size: larger; */
+    background-color: rgb(250, 210, 216);
+    border: 2px solid gray;
+    color: rgb(246, 13, 129);
+
+   
+}    
