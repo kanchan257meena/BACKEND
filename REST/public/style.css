@@ -1,8 +1,9 @@
  div{
         background-color: rgb(250, 210, 216);
         margin-bottom: 10px;
-        display: flex; flex-direction: column;
-        height: 150px; width: 200px;
+        /* display: flex; flex-direction: column; */
+        /* height: 170px; */
+         width: 200px;
         
     }
     h3{
@@ -20,6 +21,7 @@ a{
     background-color: rgb(250, 210, 216);
     border: 2px solid gray;
     color: rgb(246, 13, 129);
-
+    padding: 2px;
    
-}    
+} 
+   
