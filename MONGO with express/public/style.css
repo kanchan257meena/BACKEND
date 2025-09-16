@@ -1,0 +1,28 @@
+div{
+    border: 2px solid lightblue;
+    margin-bottom: 10px;
+   display: inline-block;
+    min-width: 150px;
+ 
+    /* max-width: 200px; */
+}
+
+.msg{
+    border: 0.5px solid lightblue;
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 5px;
+    
+}
+
+.chat{
+    background-color: rgb(203, 232, 241);
+    border-radius: 16px;
+   
+    padding: 10px;
+    
+  
+}
+body{
+    margin-left: 20px;
+}

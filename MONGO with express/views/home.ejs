@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Messenger</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
-    
+    <h2>All chats</h2>
+    <form action="/chats/new" method="GET">
+        <button class="new_chat_btn">New Chat</button>
+    </form>
+    <br> <br>
+    <%for(let chats of data ) {%>
+        <div class="chat">
+            <p>From: <%= chats.from%>
+            </p>
+            <p>to: <%= chats.to%>
+            </p>
+            <div class="msg">
+                <p class="msgbox">msg: <%= chats.msg%>
+                </p>
+                <form action="/chats/<%= chats.id %>/edit" method="GET"> 
+                <button>edit</button>
+                </form>
+            </div>
+            <!-- <hr> -->
+        </div>
+        <% } %>
+
 </body>
+
 </html>
