@@ -3,6 +3,8 @@ const app=express();
 const mongoose =require('mongoose');
 const path=require('path');
 const Chat=require("./models/chat.js");
+// const ExpressError=require("./ExpressError.js");
+const ExpressError=require("./ExpressError");
 
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
@@ -16,18 +18,31 @@ main().then((res)=>{
 .catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/Whatsapp');
+  await mongoose.connect('mongodb://127.0.0.1:27017/fakeWhatsapp');
 }
 
 
 app.listen(8080,()=>{
     console.log("server is listening");
     
-})
+});
 
+//ROOT
 app.get("/",(req,res)=>{
+      throw new ExpressError(402,"page not found");
+      next(err);
     res.send("root");
-})
+});
+
+//ERROR HANDLING MIDDLEWARE
+app.use((err,req,res,next)=>{
+    console.log("gg");
+    
+    let {status=500,message="Error"}=err;
+   res.status(status).send(message);
+});
+
+
 
 
 //INDEX ROUTE
@@ -37,14 +52,16 @@ app.get("/chats",async (req,res)=>{
 res.render("home.ejs",{data});
 });
 
-//NEW CHAT ROUTE
 
+//NEW CHAT ROUTE
 app.get("/chats/new",(req,res)=>{
-   res.render("new.ejs"); 
+    throw new ExpressError(404,"page not found");
+  
+//    res.render("new.ejs"); 
 })
 
-//POST REQ - to insert the chat in db
 
+//POST REQ - to insert the chat in db
 app.post("/chats",(req,res)=>{
     let {from,to,msg}=req.body;
     let newChat=new Chat({
@@ -63,6 +80,15 @@ app.post("/chats",(req,res)=>{
    res.redirect("/chats")
     
 });
+
+
+//NEW ---- SHOW ROUTE {error handling}
+app.get("/chats/:id",async(req,res)=>{
+    let {id}=req.params;
+    let chat= await Chat.findById(id);
+    res.render(edit.ejs,{chat});
+})
+
 
 
 //edit 
